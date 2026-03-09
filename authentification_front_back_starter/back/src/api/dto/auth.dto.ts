@@ -22,3 +22,13 @@ export class RegisterUserDto {
     @IsEnum(Role)
     role: Role;
 }
+
+export class LoginUserDto {
+    @IsNotEmpty()
+    @IsEmail()
+    email: string;
+
+    @IsNotEmpty()
+    @IsString()
+    password: string;
+}

@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { RequestValidator } from "../utils/validate-request";
-import { RegisterUserDto } from "../dto/auth.dto";
+import { LoginUserDto, RegisterUserDto } from "../dto/auth.dto";
 import container from "../config/dependency-injection";
 
 
@@ -42,6 +42,19 @@ export const login = async (
 ) : Promise<any> => {
     try {
 
+        const {errors, input} = await RequestValidator(LoginUserDto, req.body);
+
+        if(errors){
+            return res.jsonError(errors)
+        }
+
+        const token = await container.resolve("loginUserUseCase").execute({
+            email: input.email,
+            password: input.password
+        })
+
+        return res.jsonSuccess({token}, 200);
     } catch (error) {
+        next(error);
     }
 };
