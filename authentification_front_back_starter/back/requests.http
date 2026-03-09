@@ -3,11 +3,11 @@ POST http://localhost:8000/auth/register
 Content-Type: application/json
 
 {
-    "email": "jeffali@gmail.com",
+    "email": "sam@gmail.com",
     "password": "qwerty",
-    "firstname": "Rachid",
-    "lastname": "Jeffali",
-    "role": "admin"
+    "firstname": "sam",
+    "lastname": "sam",
+    "role": "user"
 }
 
 ### Login user
@@ -15,10 +15,10 @@ POST http://localhost:8000/auth/login
 Content-Type: application/json
 
 {
-    "email": "jeffali@gmail.com",
+    "email": "sam@gmail.com",
     "password": "qwerty"
 }
 
 ### Get projects
 GET http://localhost:8000/projects
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3MmYzMGQzMy1iNjUzLTQyMDctYmQ1OC1lOWE5ZjAxMzI2ZjIiLCJlbWFpbCI6ImplZmZhbGlAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzczMDY0Mjg5fQ.9cuUmJ40N74mTTNeHUBKxJu5j-Q0XW8uho0fT0_lMvs
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwZDZiZjc3YS04MjkyLTQxNTAtODgzNy0wZmY0ZmY0ZjRiNTUiLCJlbWFpbCI6InNhbUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3MzA2NTgwOX0.Mi9F0vsF7XvkOGAcQWObOx5mz6zjhvopzTaPDrJPo9Y

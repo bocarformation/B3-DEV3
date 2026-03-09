@@ -1,11 +1,11 @@
 import { NextFunction, Request, Response } from "express";
-import { User } from "../../domain/entities/user.entity";
 import { extractToken } from "../utils/extract-token";
 import container from "../config/dependency-injection";
+import { TokenPayload } from "../../application/security/token-payload";
 
 declare module "express-serve-static-core" {
     interface Request {
-        user?: User;
+        user?: TokenPayload;
     }
 }
 
@@ -29,6 +29,11 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
         return res.jsonError("Unauthorized",403)
     }
 
-    req.user = user;
+    // On ne renvoie pas (JAMAIS) le mot de passe
+    req.user = {
+        userId: user.props.id,
+        email: user.props.email,
+        role: user.props.role
+    };
     next();
 }
