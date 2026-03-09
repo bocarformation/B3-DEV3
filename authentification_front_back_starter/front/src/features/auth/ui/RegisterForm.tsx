@@ -1,0 +1,70 @@
+import {Box,Button,FormControl,FormLabel,Input,Heading,Stack,Select} from "@chakra-ui/react";
+import { useRegisterForm } from "../hooks/use-register-form.hook";
+import * as AuthModel from "../domain/model/auth-model";
+
+export const RegisterForm: React.FC = () => {
+    const hook = useRegisterForm();
+
+    return (
+        <Box maxW="xl" mx="auto" mt={8} p={6} borderWidth={1} borderRadius="lg" boxShadow="lg">
+            <Heading mb={6} textAlign="center">Inscription</Heading>
+
+            <Stack spacing={4}>
+                <FormControl>
+                    <FormLabel>Prénom</FormLabel>
+                    <Input
+                        value={hook.form.firstname}
+                        onChange={(e) => hook.updateField("firstname", e.target.value)}
+                    />
+                </FormControl>
+
+                <FormControl>
+                    <FormLabel>Nom</FormLabel>
+                    <Input
+                        value={hook.form.lastname}
+                        onChange={(e) => hook.updateField("lastname", e.target.value)}
+                    />
+                </FormControl>
+
+                <FormControl>
+                    <FormLabel>Email</FormLabel>
+                    <Input
+                        type="email"
+                        value={hook.form.email}
+                        onChange={(e) => hook.updateField("email", e.target.value)}
+                    />
+                </FormControl>
+
+                <FormControl>
+                    <FormLabel>Mot de passe</FormLabel>
+                    <Input
+                        type="password"
+                        value={hook.form.password}
+                        onChange={(e) => hook.updateField("password", e.target.value)}
+                    />
+                </FormControl>
+
+                <FormControl>
+                    <FormLabel>Rôle</FormLabel>
+                    <Select
+                        value={hook.form.role}
+                        onChange={(e) => hook.updateField("role", e.target.value as AuthModel.Role)}
+                    >
+                        <option value="participant">Participant</option>
+                        <option value="user">User</option>
+                        <option value="admin">Administrateur</option>
+                    </Select>
+                </FormControl>
+
+                <Button
+                    colorScheme="teal"
+                    width="full"
+                    onClick={hook.submit}
+                    isDisabled={!hook.isSubmittable}
+                >
+                    S’inscrire
+                </Button>
+            </Stack>
+        </Box>
+    );
+};

@@ -1,0 +1,43 @@
+import { useRef, useState } from "react";
+import * as AuthModel from "../domain/model/auth-model";
+import { RegisterFormHandler } from "../domain/form/register-form-handler";
+
+export const useRegisterForm = () => {
+    function updateField<K extends keyof AuthModel.RegisterForm>(
+        key: K, value: AuthModel.RegisterForm[K]
+    ) { 
+        const newForm = registerForm.current.updateField(form, key, value);
+        setForm(newForm)
+
+        const validation = registerForm.current.validate(newForm);
+        setErrors(validation.errors)
+    }
+
+    function isSubmittable() {
+        return registerForm.current.isSubmittable(form)
+    }
+
+    function submit() { }
+
+    const [errors, setErrors] = useState<Partial<Record<keyof AuthModel.RegisterForm, string>>>({})
+
+    const registerForm = useRef(new RegisterFormHandler());
+    const [form, setForm] = useState<AuthModel.RegisterForm>({
+        email: "",
+        password: "",
+        firstname: "",
+        lastname: "",
+        role: "admin"
+    })
+
+
+
+    return {
+        form,
+        updateField,
+        isSubmittable: isSubmittable(),
+        submit,
+        errors
+    }
+
+}
