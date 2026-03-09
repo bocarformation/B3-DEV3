@@ -1,0 +1,24 @@
+### Register user
+POST http://localhost:8000/auth/register
+Content-Type: application/json
+
+{
+    "email": "jeffali@gmail.com",
+    "password": "qwerty",
+    "firstname": "Rachid",
+    "lastname": "Jeffali",
+    "role": "admin"
+}
+
+### Login user
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "email": "jeffali@gmail.com",
+    "password": "qwerty"
+}
+
+### Get projects
+GET http://localhost:8000/projects
+Authorization: Bearer <token jwt>
