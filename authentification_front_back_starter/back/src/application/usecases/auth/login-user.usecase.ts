@@ -1,3 +1,6 @@
+import { IUserRepository } from "../../../domain/interfaces/user-repository.interface";
+import { IPasswordHasher } from "../../../shared/interfaces/password-hasher.interface";
+import { ITokenGenerator } from "../../../shared/interfaces/token-generator.interface";
 import { TokenPayload } from "../../security/token-payload";
 
 interface LoginUserPayload {

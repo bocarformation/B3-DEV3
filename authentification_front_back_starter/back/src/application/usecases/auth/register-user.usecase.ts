@@ -1,3 +1,9 @@
+import { User } from "../../../domain/entities/user.entity";
+import { Role } from "../../../domain/enums/role.enum";
+import { IUserRepository } from "../../../domain/interfaces/user-repository.interface";
+import { IIDGenerator } from "../../../shared/interfaces/id-generator.interface";
+import { IPasswordHasher } from "../../../shared/interfaces/password-hasher.interface";
+
 interface RegisterUserPayload {
     email: string,
     password: string,
@@ -10,7 +16,7 @@ export class RegisterUserUseCase {
     constructor(
         private readonly userRepository: IUserRepository,
         private readonly idGenerator: IIDGenerator, 
-        private readonly passwordHasher: IpasswordHasher
+        private readonly passwordHasher: IPasswordHasher
     ){}
 
     async execute(payload: RegisterUserPayload){
