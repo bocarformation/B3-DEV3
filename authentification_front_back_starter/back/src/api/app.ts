@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import { errorHandlerMiddleware } from './middlewares/error-handler.middleware';
 import { jsonApiResponseMiddleware } from './middlewares/json-response.middleware';
 import { authRouter } from './routes/auth.routes';
+import { projectRouter } from './routes/project.routes';
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(jsonApiResponseMiddleware);
 
 app.use("/auth", authRouter);
+app.use("/projects", projectRouter);
 
 app.use(errorHandlerMiddleware);
 

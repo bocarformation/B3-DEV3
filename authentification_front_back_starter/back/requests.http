@@ -21,4 +21,4 @@ Content-Type: application/json
 
 ### Get projects
 GET http://localhost:8000/projects
-Authorization: Bearer <token jwt>
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI3MmYzMGQzMy1iNjUzLTQyMDctYmQ1OC1lOWE5ZjAxMzI2ZjIiLCJlbWFpbCI6ImplZmZhbGlAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNzczMDY0Mjg5fQ.9cuUmJ40N74mTTNeHUBKxJu5j-Q0XW8uho0fT0_lMvs
