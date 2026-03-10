@@ -1,4 +1,4 @@
-import { Box, Button, FormControl, FormLabel, Input, Heading, Stack, Select, FormErrorMessage } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input, Heading, Stack, Select, FormErrorMessage, AlertIcon, Alert } from "@chakra-ui/react";
 import { useRegisterForm } from "../hooks/use-register-form.hook";
 import * as AuthModel from "../domain/model/auth-model";
 
@@ -8,7 +8,16 @@ export const RegisterForm: React.FC = () => {
     return (
         <Box maxW="xl" mx="auto" mt={8} p={6} borderWidth={1} borderRadius="lg" boxShadow="lg">
             <Heading mb={6} textAlign="center">Inscription</Heading>
-
+                {
+                    hook.networkError && (
+                        
+                        <Alert status="error">
+                        <AlertIcon />
+                            {hook.networkError}
+                        </Alert>
+                        
+                    )
+                }
             <Stack spacing={4}>
                 <FormControl isInvalid={!!hook.errors.firstname} >
                     <FormLabel>Prénom</FormLabel>

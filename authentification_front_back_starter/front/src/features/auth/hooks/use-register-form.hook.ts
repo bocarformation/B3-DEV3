@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
 import * as AuthModel from "../domain/model/auth-model";
 import { RegisterFormHandler } from "../domain/form/register-form-handler";
-import { useAppDispatch } from "../../../store/store";
+import { useAppDispatch, type AppState } from "../../../store/store";
 import { registerUserAction } from "../actions/register-user.action";
+import { useSelector } from "react-redux";
 
 export const useRegisterForm = () => {
     function updateField<K extends keyof AuthModel.RegisterForm>(
@@ -25,7 +26,7 @@ export const useRegisterForm = () => {
 
     const dispatch = useAppDispatch();
     const [errors, setErrors] = useState<Partial<Record<keyof AuthModel.RegisterForm, string>>>({})
-
+    const networkError = useSelector((state: AppState) => state.auth.error)
     const registerForm = useRef(new RegisterFormHandler());
     const [form, setForm] = useState<AuthModel.RegisterForm>({
         email: "",
@@ -41,7 +42,8 @@ export const useRegisterForm = () => {
         updateField,
         isSubmittable: isSubmittable(),
         submit,
-        errors
+        errors,
+        networkError
     }
 
 }
