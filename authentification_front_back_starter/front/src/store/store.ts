@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import type { Dependencies } from "./dependencies";
+import { authSlice } from "../features/auth/store/auth.slice";
 
 const reducers = combineReducers({
+    auth: authSlice.reducer
 });
 
 export type AppStore = ReturnType<typeof createStore>;
