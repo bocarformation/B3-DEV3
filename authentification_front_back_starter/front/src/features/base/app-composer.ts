@@ -13,7 +13,7 @@ export class App {
 
     setupDependencies(): Dependencies {
         return {
-            registerGateway: new RegisterUserApi();
+            registerGateway: new RegisterUserApi()
         };
     }
 }

@@ -1,6 +1,8 @@
 import { useRef, useState } from "react";
 import * as AuthModel from "../domain/model/auth-model";
 import { RegisterFormHandler } from "../domain/form/register-form-handler";
+import { useAppDispatch } from "../../../store/store";
+import { registerUserAction } from "../actions/register-user.action";
 
 export const useRegisterForm = () => {
     function updateField<K extends keyof AuthModel.RegisterForm>(
@@ -17,8 +19,11 @@ export const useRegisterForm = () => {
         return registerForm.current.isSubmittable(form)
     }
 
-    function submit() { }
+    function submit() { 
+        dispatch(registerUserAction(form))
+    }
 
+    const dispatch = useAppDispatch();
     const [errors, setErrors] = useState<Partial<Record<keyof AuthModel.RegisterForm, string>>>({})
 
     const registerForm = useRef(new RegisterFormHandler());
