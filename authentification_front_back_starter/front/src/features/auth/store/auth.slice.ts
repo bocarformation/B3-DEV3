@@ -4,12 +4,14 @@ export type AuthState = {
     status: "idle" | "loading" | "success" | "error";
     error: string | null;
     userId: string | null;
+    token: string | null;
 }
 
 const initialState: AuthState = {
     status: "idle",
     userId: null,
-    error: null
+    error: null,
+    token: null
 }
 
 export const authSlice = createSlice({
