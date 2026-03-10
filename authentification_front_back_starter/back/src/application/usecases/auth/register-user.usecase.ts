@@ -43,6 +43,7 @@ export class RegisterUserUseCase {
         user.validateOrThrow();
 
         await this.userRepository.save(user);
+        console.log(user)
         return user;
     }
 
