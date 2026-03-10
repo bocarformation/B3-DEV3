@@ -1,6 +1,12 @@
 
     export type Role = "admin" | "participant" | "user";
 
+    export type User = {
+        userId: string,
+        email: string,
+        role:Role;
+    }
+
     export type LoginForm = {
         email: string;
         password: string;

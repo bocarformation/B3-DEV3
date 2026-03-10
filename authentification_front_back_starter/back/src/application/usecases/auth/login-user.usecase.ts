@@ -37,6 +37,6 @@ export class LoginUserUseCase{
 
         const token = await this.tokenGenerator.generate(tokenPayload);
         
-        return token;
+        return {token, user};
     }
 }

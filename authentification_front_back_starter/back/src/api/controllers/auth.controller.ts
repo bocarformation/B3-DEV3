@@ -53,8 +53,40 @@ export const login = async (
             password: input.password
         })
 
-        return res.jsonSuccess({token}, 200);
+        res.cookie("accessToken", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: "lax",
+            maxAge: 3600 * 24 * 7 * 1000 // 1 semaine
+        })
+
+        return res.jsonSuccess({
+            user: {
+                userId: token.user.props.id,
+                email: token.user.props.email,
+                role: token.user.props.role
+            }
+        }, 200);
     } catch (error) {
         next(error);
+    }
+};
+
+
+export const me = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) : Promise<any> => {
+    try {
+        if(!req.user){
+            return res.jsonError("Vous n'êtes pas connecté", 401);
+        }
+
+        const {userId, email, role} = req.user;
+
+        return res.jsonSuccess({userId, email, role},200)
+    } catch (error) {
+        next(error)
     }
 };

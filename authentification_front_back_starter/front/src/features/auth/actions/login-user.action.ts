@@ -10,8 +10,8 @@ export const loginUserAction = (form: AuthModel.LoginForm) => async (
 ) => {
     try {
         dispatch(authSlice.actions.loginUserLoading());
-        const result = await dependencies.loginGateway.token(form);
-
+        const result = await dependencies.loginGateway.login(form);
+        // AuthService.saveToken(result.token) // A SUPPRIMER 
         dispatch(authSlice.actions.loginUserSuccess(result));
     } catch (error) {
         let message = "Une erreur est survenue";

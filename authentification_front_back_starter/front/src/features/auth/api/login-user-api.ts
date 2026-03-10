@@ -3,9 +3,11 @@ import * as AuthModel from "../domain/model/auth-model"
 import axios from "axios";
 
 export class LoginUserApi implements ILoginGateway {
-    async token(payload: AuthModel.LoginForm): Promise<{token: string}> {
+    async login(payload: AuthModel.LoginForm): Promise<AuthModel.User> {
         try {
-            const response = await axios.post("http://localhost:8000/auth/login", payload);
+            const response = await axios.post("http://localhost:8000/auth/login", payload, {
+                withCredentials: true,
+            });
 
             if(!response.data.success){
                 throw new Error(response.data.error?.message || "Erreur inconnue");

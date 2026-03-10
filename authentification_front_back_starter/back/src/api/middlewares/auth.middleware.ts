@@ -10,13 +10,15 @@ declare module "express-serve-static-core" {
 }
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-    const authorization = req.headers.authorization;
+    // const authorization = req.headers.authorization;
 
-    if(!authorization) {
-        return res.jsonError("Unauthorized", 403);
-    }
+    // if(!authorization) {
+    //     return res.jsonError("Unauthorized", 403);
+    // }
 
-    const token = extractToken(authorization);
+    const token = req.cookies?.accessToken;
+    
+    // const token = extractToken(authorization);
 
     if(!token){
         return res.jsonError("Unauthorized",403);

@@ -1,19 +1,24 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-
+import * as AuthModel from "../domain/model/auth-model"
 export type AuthState = {
     status: "idle" | "loading" | "success" | "error";
     error: string | null;
     userId: string | null;
-    token: string | null;
     isAuthenticated: boolean;
+    user: AuthModel.User
 }
 
 const initialState: AuthState = {
     status: "idle",
     userId: null,
     error: null,
-    token: null,
-    isAuthenticated: false
+    isAuthenticated: false,
+    user: {
+        userId: "",
+        email: "",
+        role: "user"
+    }
+
 }
 
 export const authSlice = createSlice({

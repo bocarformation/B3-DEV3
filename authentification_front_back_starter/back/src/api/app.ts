@@ -6,9 +6,11 @@ import { authRouter } from './routes/auth.routes';
 import { projectRouter } from './routes/project.routes';
 import helmet from 'helmet';
 import cors from "cors";
+import cookieParser from 'cookie-parser';
 
 const app = express();
 
+app.use(cookieParser());
 app.use(helmet());
 app.use(cors({
     origin: "http://localhost:5173",
