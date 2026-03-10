@@ -1,4 +1,4 @@
-import {Box,Button,FormControl,FormLabel,Input,Heading,Stack,Select} from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input, Heading, Stack, Select, FormErrorMessage } from "@chakra-ui/react";
 import { useRegisterForm } from "../hooks/use-register-form.hook";
 import * as AuthModel from "../domain/model/auth-model";
 
@@ -10,41 +10,45 @@ export const RegisterForm: React.FC = () => {
             <Heading mb={6} textAlign="center">Inscription</Heading>
 
             <Stack spacing={4}>
-                <FormControl>
+                <FormControl isInvalid={!!hook.errors.firstname} >
                     <FormLabel>Prénom</FormLabel>
                     <Input
                         value={hook.form.firstname}
                         onChange={(e) => hook.updateField("firstname", e.target.value)}
                     />
+                    <FormErrorMessage>{hook.errors.firstname}</FormErrorMessage>
                 </FormControl>
 
-                <FormControl>
+                <FormControl isInvalid={!!hook.errors.lastname}>
                     <FormLabel>Nom</FormLabel>
                     <Input
                         value={hook.form.lastname}
                         onChange={(e) => hook.updateField("lastname", e.target.value)}
                     />
+                    <FormErrorMessage>{hook.errors.lastname}</FormErrorMessage>
                 </FormControl>
 
-                <FormControl>
+                <FormControl isInvalid={!!hook.errors.email}>
                     <FormLabel>Email</FormLabel>
                     <Input
                         type="email"
                         value={hook.form.email}
                         onChange={(e) => hook.updateField("email", e.target.value)}
                     />
+                    <FormErrorMessage>{hook.errors.email}</FormErrorMessage>
                 </FormControl>
 
-                <FormControl>
+                <FormControl isInvalid={!!hook.errors.password}>
                     <FormLabel>Mot de passe</FormLabel>
                     <Input
                         type="password"
                         value={hook.form.password}
                         onChange={(e) => hook.updateField("password", e.target.value)}
                     />
+                    <FormErrorMessage>{hook.errors.password}</FormErrorMessage>
                 </FormControl>
 
-                <FormControl>
+                <FormControl isInvalid={!!hook.errors.role}>
                     <FormLabel>Rôle</FormLabel>
                     <Select
                         value={hook.form.role}
@@ -54,6 +58,8 @@ export const RegisterForm: React.FC = () => {
                         <option value="user">User</option>
                         <option value="admin">Administrateur</option>
                     </Select>
+                    <FormErrorMessage>{hook.errors.role}</FormErrorMessage>
+
                 </FormControl>
 
                 <Button

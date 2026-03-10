@@ -31,7 +31,6 @@ export const useRegisterForm = () => {
     })
 
 
-
     return {
         form,
         updateField,
