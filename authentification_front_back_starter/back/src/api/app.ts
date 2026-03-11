@@ -7,6 +7,7 @@ import { projectRouter } from './routes/project.routes';
 import helmet from 'helmet';
 import cors from "cors";
 import cookieParser from 'cookie-parser';
+import { analyticsRouter } from './routes/analytics.routes';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(jsonApiResponseMiddleware);
 
 app.use("/auth", authRouter);
 app.use("/projects", projectRouter);
+app.use("/analytics", analyticsRouter);
 
 app.use(errorHandlerMiddleware);
 

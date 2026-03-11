@@ -12,6 +12,10 @@ import { UUIDGenerator } from "../../shared/utils/uuid-generator";
 import { JwtAuthenticator } from "../../shared/services/jwt-authenticator";
 import { JwtTokenGenerator } from "../../shared/utils/jwt-token-generator";
 import { BcryptPasswordHasher } from "../../shared/utils/bcrypt-password-hasher";
+import { IAnalyticsRepository } from "../../domain/interfaces/analytics-repository.interface";
+import { RecordAnalyticsCommand } from "../../application/commands/record-analytics.command";
+import { GetAnalyticsQuery } from "../../application/queries/get-analytics.query";
+import { MongoAnalyticsRepository } from "../../infrastructure/repositories/mongo-analytics-repository";
 
 const jwtSecret = getEnv('JWT_SECRET');
 
@@ -23,6 +27,9 @@ export interface Dependencies {
     passwordHasher: IPasswordHasher;
     loginUserUseCase: LoginUserUseCase;
     registerUserUseCase: RegisterUserUseCase;
+    analyticsRepository: IAnalyticsRepository;
+    recordAnalyticsCommand: RecordAnalyticsCommand;
+    getAnalyticsQuery: GetAnalyticsQuery;
     jwtSecret: string
 }
 
@@ -39,7 +46,11 @@ container.register({
     tokenGenerator: asClass(JwtTokenGenerator).singleton(),
     passwordHasher: asClass(BcryptPasswordHasher).singleton(),
     loginUserUseCase: asClass(LoginUserUseCase).singleton(),
-    registerUserUseCase: asClass(RegisterUserUseCase).singleton()
+    registerUserUseCase: asClass(RegisterUserUseCase).singleton(),
+    analyticsRepository: asClass(MongoAnalyticsRepository).singleton(),
+    recordAnalyticsCommand: asClass(RecordAnalyticsCommand).singleton(),
+    getAnalyticsQuery: asClass(GetAnalyticsQuery).singleton()
+
 
 });
 
