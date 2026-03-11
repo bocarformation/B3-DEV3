@@ -3,6 +3,7 @@ import { useProjectList } from "../hooks/useProjectList";
 
 export const Project = () => {
     const hook = useProjectList();
+    // useTrackPageView("/projects");
 
     return (
         <Box maxW="800px" mx="auto" py={8} px={4}>

@@ -1,5 +1,6 @@
 import type { Dependencies } from "../../store/dependencies";
 import { createStore, type AppStore } from "../../store/store";
+import { SendAnalyticsApi } from "../analytics/api/send-analytics.api";
 import { FetchMeApi } from "../auth/api/fetch-user.api";
 import { LoginUserApi } from "../auth/api/login-user-api";
 import { RegisterUserApi } from "../auth/api/register-user-api";
@@ -19,7 +20,8 @@ export class App {
             registerGateway: new RegisterUserApi(),
             loginGateway: new LoginUserApi(),
             fetchProjects: new FetchProjectsApi(),
-            fetchMe: new FetchMeApi()
+            fetchMe: new FetchMeApi(),
+            analyticsGateway: new SendAnalyticsApi()
         };
     }}
 
