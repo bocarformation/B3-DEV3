@@ -1,5 +1,4 @@
-import { maxLength, minLength } from "class-validator";
-import mongoose from "mongoose";
+import mongoose, { InferSchemaType } from "mongoose";
 
 export type EventType = "pageview" | "click" | "purchase" | "add-to-cart" | "remove-from-cart";
 
@@ -18,7 +17,14 @@ export const EventSchema = new mongoose.Schema({
     timestamps: true, // créé les champ createdAt, updatedAt et __v 
 });
 
-export type Event = mongoose.Document & {
-    eventName: EventType;
-}
+
+export type Event = InferSchemaType<typeof EventSchema>
+// export type Event = mongoose.Document & {
+//     eventName: EventType;
+//     userId: string;
+//     page: string;
+//     timestamp: Date
+// }
+
+export const EventModel = mongoose.model<Event>("Event", EventSchema);
 
