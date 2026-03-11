@@ -44,18 +44,41 @@ export const authSlice = createSlice({
         loginUserLoading: (state) => {
             state.status = "loading";
             state.error = null;
-            state.token = null;
+            state.user.email = "";
+            state.user.role = "user";
+            state.user.userId = "";
         },
-        loginUserSuccess: (state, action: PayloadAction<{token: string}> ) => {
+        loginUserSuccess: (state, action: PayloadAction<AuthModel.User> ) => {
             state.status = "success";
             state.error = null;
-            state.token = action.payload.token;
-            state.isAuthenticated = true
+            state.isAuthenticated = true;
+            state.user.email = action.payload.email;
+            state.user.role = action.payload.role;
+            state.user.userId = action.payload.userId
         },
         loginUserError: (state, action: PayloadAction<string>) => {
             state.status = "error";
             state.error = action.payload;
-            state.token = null
+            state.user.userId = "";
+            state.user.email = "";
+            state.user.role = "user";
+        },
+
+        logout: (state) =>{
+            state.user.email = "";
+            state.user.role = "user";
+            state.user.userId = "";
+            state.isAuthenticated = false;
+            state.error = null;
+            state.status = "idle";
+        }, 
+
+        hydrateAuth: (state, action: PayloadAction<AuthModel.User>) => {
+            state.user.email = action.payload.email;
+            state.user.role = action.payload.role;
+            state.isAuthenticated = true;
+            state.error = null;
+            state.status = "success";
         }
 
     }

@@ -13,7 +13,7 @@ export class LoginUserApi implements ILoginGateway {
                 throw new Error(response.data.error?.message || "Erreur inconnue");
             }
 
-            return response.data.data
+            return response.data.data.user
         } catch (error) {
           if(axios.isAxiosError(error) && error.response?.data?.error?.message){
             throw new Error(error.response.data.error.message)

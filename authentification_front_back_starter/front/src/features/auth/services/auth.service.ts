@@ -1,3 +1,5 @@
+// NE JAMAIS STOCKER LE JWT dans le local storage 
+
 export class AuthService {
       static saveToken(token: string){
         localStorage.setItem("token", token);

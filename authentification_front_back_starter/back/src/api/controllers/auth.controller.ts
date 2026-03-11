@@ -48,12 +48,12 @@ export const login = async (
             return res.jsonError(errors)
         }
 
-        const token = await container.resolve("loginUserUseCase").execute({
+        const result = await container.resolve("loginUserUseCase").execute({
             email: input.email,
             password: input.password
         })
 
-        res.cookie("accessToken", token, {
+        res.cookie("accessToken", result.token, {
             httpOnly: true,
             secure: true,
             sameSite: "lax",
@@ -62,9 +62,9 @@ export const login = async (
 
         return res.jsonSuccess({
             user: {
-                userId: token.user.props.id,
-                email: token.user.props.email,
-                role: token.user.props.role
+                userId: result.user.props.id,
+                email: result.user.props.email,
+                role: result.user.props.role
             }
         }, 200);
     } catch (error) {
