@@ -4,6 +4,7 @@ import { SendAnalyticsApi } from "../analytics/api/send-analytics.api";
 import { FetchMeApi } from "../auth/api/fetch-user.api";
 import { LoginUserApi } from "../auth/api/login-user-api";
 import { RegisterUserApi } from "../auth/api/register-user-api";
+import { FetchAnalyticsDataApi } from "../dashboard/api/fetch-analytics-data.api";
 import { FetchProjectsApi } from "../projects/api/fetch-projects.api";
 
 export class App {
@@ -21,7 +22,8 @@ export class App {
             loginGateway: new LoginUserApi(),
             fetchProjects: new FetchProjectsApi(),
             fetchMe: new FetchMeApi(),
-            analyticsGateway: new SendAnalyticsApi()
+            analyticsGateway: new SendAnalyticsApi(),
+            dashboardQuery: new FetchAnalyticsDataApi()
         };
     }}
 

@@ -4,6 +4,6 @@ export class GetAnalyticsQuery {
     constructor(private readonly analyticsRepository: IAnalyticsRepository){}
 
     async execute() {
-        await this.analyticsRepository.getAnalytics();
+        return this.analyticsRepository.getAnalytics();
     }
 }
