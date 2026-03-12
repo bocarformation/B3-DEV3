@@ -22,3 +22,9 @@ Content-Type: application/json
 ### Get projects
 GET http://localhost:8000/projects
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwZDZiZjc3YS04MjkyLTQxNTAtODgzNy0wZmY0ZmY0ZjRiNTUiLCJlbWFpbCI6InNhbUBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsImlhdCI6MTc3MzA2NTgwOX0.Mi9F0vsF7XvkOGAcQWObOx5mz6zjhvopzTaPDrJPo9Y
+
+### Get public projects offset
+GET http://localhost:8000/projects/paginated?page=5&limit=2
+
+### Get public projects cursor (keyset)
+GET http://localhost:8000/projects/cursor??lastDate=2024-01-01&limit=5
