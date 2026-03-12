@@ -6,7 +6,7 @@ interface RedisOptions {
 }
 
 export const redisCachingMiddleware = (options: RedisOptions = {EX: 21600}) => {
-    return async (req: Request, res: Response, next: NextFunction): Promise<Response | void> => {
+    return async (req: Request, res: Response, next: NextFunction): Promise<any> => {
         console.log("redisMiddleware déclenché pour: ", req.method, req.originalUrl);
 
         if(!isRedisWorking){

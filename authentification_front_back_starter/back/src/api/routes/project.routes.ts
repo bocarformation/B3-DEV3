@@ -3,12 +3,13 @@ import { getProjectsByCursor, getProjectsPaginated, getPublicProjects, projectsL
 import { authMiddleware } from "../middlewares/auth.middleware";
 import { authorizeRoleMiddleware } from "../middlewares/authorize-roles.middleware";
 import { Role } from "../../domain/enums/role.enum";
+import { redisCachingMiddleware } from "../middlewares/redis.middleware";
 
 const router = Router();
 
 // Routes publiques (sans auth)
-router.get("/public", getPublicProjects);
-router.get("/paginated", getProjectsPaginated); // ?page=1&limit=10
+router.get("/public", redisCachingMiddleware(), getPublicProjects);
+router.get("/paginated",redisCachingMiddleware(), getProjectsPaginated); // ?page=1&limit=10
 router.get("/cursor", getProjectsByCursor); // ?lastDate=...&lastId=...&limit=10
 
 

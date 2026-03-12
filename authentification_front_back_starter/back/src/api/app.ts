@@ -22,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(jsonApiResponseMiddleware);
 
+
 app.use("/auth", authRouter);
 app.use("/projects", projectRouter);
 app.use("/analytics", analyticsRouter);

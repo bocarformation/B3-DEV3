@@ -30,7 +30,7 @@ export const writeToRedis = async (key: string, value: string, options: SetOptio
     const redisClient = getRedisClient();
     if (isRedisWorking()) {
         try {
-            await redisClient.set(key, value, options);
+            await redisClient!.set(key, value, options);
         } catch (error) {
             console.log("Erreur Redis lors de l'écriture: ", error);
 
