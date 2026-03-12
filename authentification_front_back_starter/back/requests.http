@@ -29,3 +29,7 @@ GET http://localhost:8000/projects/paginated?page=5&limit=2
 
 ### Get public projects cursor (keyset)
 GET http://localhost:8000/projects/cursor??lastDate=2024-01-01&limit=5
+
+
+### Get Public
+GET http://localhost:8000/projects/public

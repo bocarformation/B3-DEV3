@@ -57,8 +57,8 @@ container.register({
     recordAnalyticsCommand: asClass(RecordAnalyticsCommand).singleton(),
     getAnalyticsQuery: asClass(GetAnalyticsQuery).singleton(),
     projectsQuery: asClass(ProjectsQuery).singleton(),
-    mongoProjectRepository: asClass(MongoProjectRepository).singleton()
-
+    mongoProjectRepository: asClass(MongoProjectRepository).singleton(),
+    projectRepository: asClass(MongoProjectRepository).singleton()
 
 });
 
