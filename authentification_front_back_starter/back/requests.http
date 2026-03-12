@@ -25,6 +25,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwZDZiZ
 
 ### Get public projects offset
 GET http://localhost:8000/projects/paginated?page=5&limit=2
+# GET http://localhost:8000/projects/paginated?limit=2&page=5
 
 ### Get public projects cursor (keyset)
 GET http://localhost:8000/projects/cursor??lastDate=2024-01-01&limit=5
