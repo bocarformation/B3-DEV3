@@ -16,6 +16,8 @@ import { IAnalyticsRepository } from "../../domain/interfaces/analytics-reposito
 import { RecordAnalyticsCommand } from "../../application/commands/record-analytics.command";
 import { GetAnalyticsQuery } from "../../application/queries/get-analytics.query";
 import { MongoAnalyticsRepository } from "../../infrastructure/repositories/mongo-analytics-repository";
+import { IProjectRepository } from "../../domain/interfaces/project-repository.interface";
+import { ProjectsQuery } from "../../application/queries/projects.query";
 
 const jwtSecret = getEnv('JWT_SECRET');
 
@@ -30,6 +32,8 @@ export interface Dependencies {
     analyticsRepository: IAnalyticsRepository;
     recordAnalyticsCommand: RecordAnalyticsCommand;
     getAnalyticsQuery: GetAnalyticsQuery;
+    projectRepository: IProjectRepository;
+    projectsQuery: ProjectsQuery;
     jwtSecret: string
 }
 
@@ -49,7 +53,8 @@ container.register({
     registerUserUseCase: asClass(RegisterUserUseCase).singleton(),
     analyticsRepository: asClass(MongoAnalyticsRepository).singleton(),
     recordAnalyticsCommand: asClass(RecordAnalyticsCommand).singleton(),
-    getAnalyticsQuery: asClass(GetAnalyticsQuery).singleton()
+    getAnalyticsQuery: asClass(GetAnalyticsQuery).singleton(),
+    projectsQuery: asClass(ProjectsQuery).singleton()
 
 
 });
