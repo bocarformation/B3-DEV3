@@ -95,10 +95,11 @@ export const getProjectsByCursor = async (
             nextCursor: projects.length > 0 ? {
                 lastDate: projects[projects.length - 1].date,
                 lastId: projects[projects.length - 1]._id
-            } : null 
-        },200)
+            } : null
+        })
        
     } catch (error) {
         next(error);
     }
 }
+

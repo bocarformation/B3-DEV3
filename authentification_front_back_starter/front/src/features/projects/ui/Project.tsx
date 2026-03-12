@@ -1,7 +1,7 @@
 import { Box, Heading, Text, VStack, StackDivider, Badge } from "@chakra-ui/react";
 import { useProjectList } from "../hooks/useProjectList";
 
-export const Project = () => {
+const Project = () => {
     const hook = useProjectList();
     // useTrackPageView("/projects");
 
@@ -31,3 +31,5 @@ export const Project = () => {
         </Box>
     );
 };
+
+export default Project

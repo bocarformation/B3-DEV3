@@ -6,7 +6,7 @@ import { authSlice } from "../store/auth.slice";
 
 export const registerUserAction = (form: AuthModel.RegisterForm) => async (
     dispatch: AppDispatch,
-    getState: AppGetState,
+    _: AppGetState,
     dependencies: Dependencies
 ) => {
     try {
